@@ -10,17 +10,38 @@
   "packageManager": "yarn@3.1.0",
   "devDependencies": {
     "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
     "@mdx-js/react": "^1.6.22",
     "@storybook/addon-actions": "^6.4.0-rc.1",
     "@storybook/addon-docs": "^6.4.0-rc.1",
     "@storybook/addon-essentials": "^6.4.0-rc.1",
     "@storybook/addon-links": "^6.4.0-rc.1",
     "@storybook/react": "^6.4.0-rc.1",
+    "@storybook/testing-library": "^0.0.3",
+    "@storybook/testing-react": "^0.0.22",
+    "@testing-library/react": "^12.1.2",
+    "@types/jest": "^27.0.2",
+    "babel-jest": "^27.3.1",
     "babel-loader": "^8.2.3",
+    "jest": "^27.3.1",
+    "jsdom": "^18.1.0",
     "typescript": "latest"
   },
   "scripts": {
+    "test": "jest stories",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+    }
   }
 }

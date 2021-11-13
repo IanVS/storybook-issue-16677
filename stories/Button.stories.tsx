@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import {userEvent, screen} from '@storybook/testing-library';
 
 import { Button } from './Button';
 
@@ -23,19 +24,12 @@ Primary.args = {
   label: 'Button',
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
-};
+export const Secondary = {
+  play: async () => {
+    userEvent.click(screen.getByRole('button'))
+  },
+  args: {
+    primary: false,
+    label: "Button"
+  }
+}
